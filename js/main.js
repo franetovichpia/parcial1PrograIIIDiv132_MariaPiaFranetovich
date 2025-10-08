@@ -1,16 +1,16 @@
 const frutas = [
-    {id: 1, nombre: "anana", precio: 300, img: "img/anana.jpg"},
-    {id: 2, nombre: "arandano", precio: 250, img: "img/arandano.jpg"},
-    {id: 3, nombre: "banana", precio: 270, img: "img/banana.jpg"},
-    {id: 4, nombre: "frambuesa", precio: 280, img: "img/frambuesa.png"},
-    {id: 5, nombre: "frutilla", precio: 500, img: "img/frutilla.jpg"},
-    {id: 6, nombre: "kiwi", precio: 450, img: "img/kiwi.jpg"},
+    {id: 1, nombre: "anana", precio: 300, img: "./img/anana.jpg"},
+    {id: 2, nombre: "arandano", precio: 250, img: "./img/arandano.jpg"},
+    {id: 3, nombre: "banana", precio: 270, img: "./img/banana.jpg"},
+    {id: 4, nombre: "frambuesa", precio: 280, img: "./img/frambuesa.png"},
+    {id: 5, nombre: "frutilla", precio: 500, img: "./img/frutilla.jpg"},
+    {id: 6, nombre: "kiwi", precio: 450, img: "./img/kiwi.jpg"},
     {id: 7, nombre: "manzana", precio: 320, img: "img/manzana.jpg"},
-    {id: 8, nombre: "naranja", precio: 350, img: "img/naranja.jpg"},
-    {id: 9, nombre: "pera", precio: 370, img: "img/pera.jpg"},
-    {id: 10, nombre:"pomelo amarillo", precio: 500, img: "img/pomelo-amarillo.jpg"},
-    {id: 11, nombre: "pomelo rojo", precio: 550, img: "img/pomelo-rojo.jpg"},
-    {id: 12, nombre: "sandia", precio: 900, img: "img/sandia.jpg"}
+    {id: 8, nombre: "naranja", precio: 350, img: "./img/naranja.jpg"},
+    {id: 9, nombre: "pera", precio: 370, img: "./img/pera.jpg"},
+    {id: 10, nombre:"pomelo amarillo", precio: 500, img: "./img/pomelo-amarillo.jpg"},
+    {id: 11, nombre: "pomelo rojo", precio: 550, img: "./img/pomelo-rojo.jpg"},
+    {id: 12, nombre: "sandia", precio: 900, img: "./img/sandia.jpg"}
 ];
 
 // aca se mostrarian los productos 
@@ -33,7 +33,7 @@ function imprimirDatosAlumno() {
 // mostrar productos
 function mostrarFrutas(lista) {
     //limpio antes de mostrar
-    contenedorFrutas.innerHTML = "";
+    contenedor.innerHTML = "";
    
 
     // recorremos cada elemento con forEach
@@ -43,7 +43,7 @@ function mostrarFrutas(lista) {
         card.classList.add("card-producto");
 
         const img = document.createElement("img");
-        img.src = fruta.imagen;
+        img.src = fruta.img;
         img.alt = fruta.nombre;
 
         const titulo = document.createElement("h3");
