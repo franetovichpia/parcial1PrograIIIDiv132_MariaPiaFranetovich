@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-widht, initial-scale=1.0">
+        <title>Tienda de Frutas</title>
+        <!-- con esto vinculamos el css-->
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+        <!--Nav Bar-->
+        <!-- Esta barra muestra el titulo, el nombre, buscador y contador-->
+         <nav>
+            <h1>Fruteria</h1>
+            <p id="nombreAlumno"></p>
+            <!-- para buscar frutas -->
+             <input type="text" id="buscador" placeholder="Buscar">
+             <!--contador de productos-->
+             <p id="contadorCarrito">Carrito: 0 productos</p>
+         </nav>
+         <!--Productos -->
+         <!-- muestra frutas que esten disponibles-->
+          <section>
+            <h2>Nuestras frutas</h2>
+            <div>
+                <button onclick="ordenarPorNombre()">Ordenar por nombre</button>
+                <button onclick="ordenarPorPrecio()">Ordenar por precio</button>
+            </div>
+            <div id="contenedorProductos" class="grid"></div>
+          </section>
+
+          <!-- carrito de compras-->
+           <!-- se muestran los productos que agreguemos al carrito-->
+            <section id="carrito">
+                <h2>Carrito</h2>
+                <ul id="listaCarrito"></ul>
+
+                <!--total de precios del carrito-->
+                <p id="total">Total: $0</p>
+
+                <!--boton para vaciarlo-->
+                <button id="vaciarCarrito" class="btn-rojo">vaciar Carrito</button>
+            </section>
+
+            <!--aca vinculamos el archivo main js-->
+            <script src="js/main.js"></script>
+    </body>
+</html>
