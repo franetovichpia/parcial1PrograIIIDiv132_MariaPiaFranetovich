@@ -13,7 +13,7 @@ const frutas = [
     {id: 12, nombre: "sandia", precio: 900, img: "img/sandia.jpg"}
 ];
 
-
+// aca se mostrarian los productos 
 const contenedor = document.getElementById("contenedorProductos");
 // crear objeto alumno y mostrar datos
 const alumno = {
@@ -32,9 +32,13 @@ function imprimirDatosAlumno() {
 // 3
 // mostrar productos
 function mostrarFrutas(lista) {
+    //limpio antes de mostrar
     contenedorFrutas.innerHTML = "";
    
+
+    // recorremos cada elemento con forEach
     lista.forEach(fruta => {
+        // creo un div para cada fruta
         const card = document.createElement("div");
         card.classList.add("card-producto");
 
@@ -50,14 +54,16 @@ function mostrarFrutas(lista) {
 
         const boton = document.createElement("button");
         boton.textContent = "Agregar al carrito";
+        //llama a la funcion de agregar al carrito
         boton.addEventListener("click", () => agregarAlCarrito(fruta));
 
+        // agreggo todo
         card.append(img, titulo, precio, boton);
         contenedor.appendChild(card);
     });
 }
 
-// EJERCICIO 4: Filtrar productos
+//  Filtrar productos
 
 const inputBusqueda = document.getElementById("buscador");
 inputBusqueda.addEventListener("input", () => {
@@ -65,16 +71,19 @@ inputBusqueda.addEventListener("input", () => {
     const frutasFiltradas = frutas.filter(fruta =>
             fruta.nombre.toLowerCase().includes(texto)
     );
+    // muestra solo las que coinciden
     mostrarFrutas(frutasFiltradas);
 });
 
 
-// EJERCICIO 5, 6, 7: Carrito y localStorage
-
+//Carrito y localStorage
+// carrito de compras
 let carrito = [];
 
 function agregarAlCarrito(fruta) {
+    // agrega al Carrito
     carrito.push(fruta);
+    //actualiza carrito
     mostrarCarrito();
     guardarCarrito();
 }
@@ -85,6 +94,7 @@ function eliminarProducto(indice) {
     guardarCarrito();
 }
 
+// muestra carrito en la pagina
 function mostrarCarrito() {
     const lista = document.getElementById("listaCarrito");
     lista.innerHTML = "";
@@ -92,8 +102,10 @@ function mostrarCarrito() {
     let total = 0;
 
     carrito.forEach((item, index) => {
-        total += item.precio;
+        // suma precio total
+        total += item.precio; 
 
+        // aca creo elemento de lista
         const li = document.createElement("li");
         li.classList.add("bloque-item");
 
@@ -110,16 +122,19 @@ function mostrarCarrito() {
         lista.appendChild(li);
     });
 
+    // actualizamos el contador y el total en la pagina
     document.getElementById("contadorCarrito").textContent = `Carrito: ${carrito.length} productos`;
     document.getElementById("total").textContent = `Total: $${total}`;
 
 }
 function guardarCarrito() {
+    // localStorage como espacio de almacenamiento para que cuando cerremos la pagina no se borrren
     localStorage.setItem("carrito", JSON.stringify(carrito));
 }
 function cargarCarrito() {
     const datos = localStorage.getItem("carrito");
     if (datos) {
+        // aca lo utilice para convertir de texto a array
         carrito = JSON.parse(datos);
         mostrarCarrito();
     }
@@ -132,13 +147,13 @@ function vaciarCarrito() {
 }
 document.getElementById("vaciarCarrito").addEventListener("click", vaciarCarrito);
 
-// ejercicio 8
+
 function ordenarPorNombre() {
     const frutasOrdenadas = [...frutas].sort((a, b) => a.precio - b.precio);
     mostrarFrutas(frutasOrdenadas);
 }
 
-// init
+// inicilizamos la pagina
 
 function init() {
     imprimirDatosAlumno();
@@ -146,4 +161,6 @@ function init() {
     cargarCarrito();
 }
 
-init();
+
+// llamo a la funcion de inicializacion
+init(); 
